@@ -25,15 +25,14 @@ class Murderer {
 
         Map<String, Integer> sortedMurderersMap = getSortedMurderersMap(murderersMap);
 
-        sortedMurderersMap.forEach((nameOfMurdered, amountKillers) -> {
-            if (!murderedSet.contains(nameOfMurdered))
-                System.out.println(nameOfMurdered + " " + amountKillers);
-            }
+        sortedMurderersMap.forEach((nameOfMurdered, amountKillers) ->
+                System.out.println(nameOfMurdered + " " + amountKillers)
         );
     }
 
     public Map<String, Integer> getSortedMurderersMap(Map<String, Integer> murderersMap) {
         return murderersMap.entrySet().stream()
+                .filter(x -> !murderedSet.contains(x.getKey()))
                 .sorted(Map.Entry.comparingByKey())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (oldValue, newValue) -> oldValue, LinkedHashMap::new));
