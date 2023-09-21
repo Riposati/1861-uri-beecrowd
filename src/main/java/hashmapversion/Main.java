@@ -7,8 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Murderer {
-    private Map<String, Integer> murderersMap = new HashMap<>();
-    private Set<String> murderedSet = new HashSet<>();
+    private final Map<String, Integer> murderersMap = new HashMap<>();
+    private final Set<String> murderedSet = new HashSet<>();
 
     public void putInMurderersMap(String name) {
         murderersMap.putIfAbsent(name, 0);
